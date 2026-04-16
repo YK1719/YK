@@ -1,0 +1,28 @@
+Q1 A
+
+package main
+
+import (
+    "fmt"
+    "os"
+)
+
+func main() {
+    file, err := os.Create("myfile.txt")
+    if err != nil {
+        fmt.Println("Error creating file:", err)
+        return
+    }
+    defer file.Close()
+
+    content := "Hello, Go Language!\nThis is a text file.\nCreated using os.Create()"
+    _, err = file.WriteString(content)
+    if err != nil {
+        fmt.Println("Error writing to file:", err)
+        return
+    }
+
+    fmt.Println("File 'myfile.txt' created successfully!")
+}
+
+

@@ -1,0 +1,28 @@
+Q1 B
+
+
+package main
+
+import "fmt"
+
+type Student struct {
+    RollNo int
+    Name   string
+    Marks  float64
+}
+
+// Pointer receiver method
+func (s *Student) show() {
+    fmt.Println("--- Student Details ---")
+    fmt.Println("Roll No :", s.RollNo)
+    fmt.Println("Name    :", s.Name)
+    fmt.Println("Marks   :", s.Marks)
+}
+
+func main() {
+    s := &Student{}
+    fmt.Print("Enter RollNo, Name, Marks: ")
+    fmt.Scan(&s.RollNo, &s.Name, &s.Marks)
+    s.show()
+}
+

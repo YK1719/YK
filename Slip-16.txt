@@ -1,0 +1,27 @@
+
+
+
+Q1 B 
+
+
+package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func delay() {
+    ms := rand.Intn(251)  // 0 to 250
+    time.Sleep(time.Duration(ms) * time.Millisecond)
+    fmt.Printf("[waited %dms]\n", ms)
+}
+
+func main() {
+    rand.Seed(time.Now().UnixNano())
+    for i := 0; i <= 10; i++ {
+        fmt.Printf("Number: %d\n", i)
+        delay()
+    }
+}

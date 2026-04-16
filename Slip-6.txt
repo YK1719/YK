@@ -1,0 +1,30 @@
+
+
+Q1 B
+
+
+package main
+
+import "fmt"
+
+func copyArray(src []int) []int {
+    dst := make([]int, len(src))
+    copy(dst, src)   // built-in copy()
+    return dst
+}
+
+func main() {
+    var n int
+    fmt.Print("Enter number of elements: ")
+    fmt.Scan(&n)
+
+    src := make([]int, n)
+    fmt.Print("Enter elements: ")
+    for i := range src {
+        fmt.Scan(&src[i])
+    }
+
+    dst := copyArray(src)
+    fmt.Println("Source Array:", src)
+    fmt.Println("Copied Array:", dst)
+}

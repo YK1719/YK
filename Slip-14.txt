@@ -1,0 +1,31 @@
+Q1 A
+
+package main
+
+import "fmt"
+
+func main() {
+    // Create slice
+    s := []int{10, 20, 30, 40, 50}
+    fmt.Println("Original :", s)
+
+    // Append
+    s = append(s, 60, 70)
+    fmt.Println("After Append :", s)
+
+    // Remove element at index 2 (value 30)
+    s = append(s[:2], s[3:]...)
+    fmt.Println("After Remove(idx 2):", s)
+
+    // Copy
+    dst := make([]int, len(s))
+    copy(dst, s)
+    fmt.Println("Copied Slice:", dst)
+
+    // Slice of slice
+    sub := s[1:4]
+    fmt.Println("Sub-slice[1:4]:", sub)
+
+    fmt.Printf("Len: %d | Cap: %d\n", len(s), cap(s))
+}
+

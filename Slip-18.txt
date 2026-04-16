@@ -1,0 +1,23 @@
+Q1 A
+
+
+package main
+
+import "fmt"
+
+func multiplicationTable(n int) {
+    fmt.Printf("Multiplication Table of %d:\n", n)
+    for i := 1; i <= 10; i++ {
+        fmt.Printf("%d x %d = %d\n", n, i, n*i)
+    }
+}
+
+func main() {
+    var n int
+    fmt.Print("Enter a number: ")
+    fmt.Scan(&n)
+    multiplicationTable(n)
+}
+
+
+

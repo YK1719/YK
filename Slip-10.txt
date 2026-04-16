@@ -1,0 +1,30 @@
+
+
+
+Q1 B
+
+package main
+
+import "fmt"
+
+func fibGenerator(n int, ch chan int) {
+    a, b := 0, 1
+    for i := 0; i < n; i++ {
+        ch <- a           // write to channel
+        a, b = b, a+b
+    }
+    close(ch)
+}
+
+func main() {
+    n := 10
+    ch := make(chan int)
+
+    go fibGenerator(n, ch)
+
+    fmt.Print("Fibonacci Series: ")
+    for v := range ch {  // read from channel
+        fmt.Printf("%d ", v)
+    }
+    fmt.Println()
+}

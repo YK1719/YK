@@ -1,0 +1,21 @@
+Q1 A
+
+package main
+
+import "fmt"
+
+func sumOfDigits(n int) int {
+    if n == 0 {
+        return 0
+    }
+    return (n % 10) + sumOfDigits(n/10)
+}
+
+func main() {
+    var n int
+    fmt.Print("Enter a number: ")
+    fmt.Scan(&n)
+    fmt.Printf("Sum of digits of %d = %d\n", n, sumOfDigits(n))
+}
+
+

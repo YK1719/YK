@@ -1,0 +1,27 @@
+Q1 A
+
+package main
+
+import "fmt"
+
+func isPalindrome(n int) bool {
+    temp, rev := n, 0
+    for temp > 0 {
+        rev = rev*10 + temp%10
+        temp /= 10
+    }
+    return n == rev
+}
+
+func main() {
+    var n int
+    fmt.Print("Enter a number: ")
+    fmt.Scan(&n)
+    if isPalindrome(n) {
+        fmt.Printf("%d is a Palindrome.\n", n)
+    } else {
+        fmt.Printf("%d is NOT a Palindrome.\n", n)
+    }
+}
+
+

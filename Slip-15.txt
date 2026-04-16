@@ -1,0 +1,28 @@
+Q1 A
+
+package main
+
+import "fmt"
+
+func calculate(a, b float64) (float64, float64, float64, float64) {
+    return a + b, a - b, a * b, a / b
+}
+
+func minMax(arr []int) (min, max int) {
+    min, max = arr[0], arr[0]
+    for _, v := range arr {
+        if v < min { min = v }
+        if v > max { max = v }
+    }
+    return  // named return
+}
+
+func main() {
+    add, sub, mul, div := calculate(10, 4)
+    fmt.Printf("Add=%.1f Sub=%.1f Mul=%.1f Div=%.1f\n", add, sub, mul, div)
+
+    arr := []int{3, 1, 9, 5, 2}
+    mn, mx := minMax(arr)
+    fmt.Printf("Min=%d, Max=%d\n", mn, mx)
+}
+

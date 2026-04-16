@@ -1,0 +1,20 @@
+Q1 A
+
+package main
+
+import "fmt"
+
+func swap(a, b *int) {
+    *a, *b = *b, *a
+}
+
+func main() {
+    var x, y int
+    fmt.Print("Enter two numbers: ")
+    fmt.Scan(&x, &y)
+
+    fmt.Printf("Before Swap: x = %d, y = %d\n", x, y)
+    swap(&x, &y)
+    fmt.Printf("After  Swap: x = %d, y = %d\n", x, y)
+}
+

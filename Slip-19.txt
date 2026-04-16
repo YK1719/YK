@@ -1,0 +1,21 @@
+Q1 A
+
+package main
+
+import "fmt"
+
+func addSub(a, b int) (int, int) {
+    return a + b, a - b
+}
+
+func main() {
+    var a, b int
+    fmt.Print("Enter two integers: ")
+    fmt.Scan(&a, &b)
+
+    sum, diff := addSub(a, b)
+    fmt.Printf("Sum        = %d\n", sum)
+    fmt.Printf("Difference = %d\n", diff)
+}
+
+

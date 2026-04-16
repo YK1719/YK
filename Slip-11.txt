@@ -1,0 +1,22 @@
+Q1 A
+
+package main
+
+import "fmt"
+
+func isTwoDigit(n int) bool {
+    if n < 0 { n = -n }  // handle negatives
+    return n >= 10 && n <= 99
+}
+
+func main() {
+    var n int
+    fmt.Print("Enter a number: ")
+    fmt.Scan(&n)
+    if isTwoDigit(n) {
+        fmt.Printf("%d is a Two-Digit number.\n", n)
+    } else {
+        fmt.Printf("%d is NOT a Two-Digit number.\n", n)
+    }
+}
+
