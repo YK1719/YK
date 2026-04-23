@@ -1,0 +1,38 @@
+question-1
+
+Write a Python program that accepts value of m and n. Divides m by n and handles a ZeroDivisionError if the user tries to divide by zero.
+
+try:
+    m = int(input("Enter value of m: "))
+    n = int(input("Enter value of n: "))
+    result = m / n
+    print("Result:", result)
+except ZeroDivisionError:
+    print("Error: Division by zero is not allowed.")
+
+Write a python program to create a module containing factorial function, power dictionary and list of vowels. Save this as variables.py. Import variables module to print the factorial of n, print the power of n, and second alphabet from the vowels list. (Accept n from user)
+
+Variables.py
+def factorial(n):
+    f = 1
+    for i in range(1, n+1):
+        f = f * i
+    return f
+
+power = {
+    1:1,
+    2:4,
+    3:9,
+    4:16,
+    5:25
+}
+
+vowels = ['a','e','i','o','u']
+
+main.py
+
+import variables
+n = int(input("Enter number: "))
+print("Factorial:", variables.factorial(n))
+print("Power:", variables.power.get(n))
+print("Second vowel:", variables.vowels[1])
