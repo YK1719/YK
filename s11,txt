@@ -1,0 +1,118 @@
+Write a python code to a create a list of 10 integer numbers. Display square of all elements of list. (Use a lambda function with map())
+# Create a list of 10 integer numbers
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Use lambda function with map() to find squares
+squares = list(map(lambda x: x**2, numbers))
+
+# Display the result
+print("Original List:", numbers)
+print("Squares of elements:", squares)
+Create a Flask application that allows users to add and view tasks. The application should have: a) A form to add a task (task_name). b) Store tasks in a SQL server database. c) Display all tasks below the form.
+SQL DATABASE open
+CREATE DATABASE TaskDB;
+
+USE TaskDB;
+
+CREATE TABLE Tasks (
+id INT IDENTITY(1,1) PRIMARY KEY,
+task_name VARCHAR(255)
+);
+
+App.py
+from flask import Flask, render_template, request, redirect
+import pyodbc
+
+app = Flask(__name__)
+
+# SQL Server Connection
+conn = pyodbc.connect(
+    "Driver={SQL Server};"
+    "Server=YOUR_SERVER_NAME;"
+    "Database=TaskDB;"
+    "Trusted_Connection=yes;"
+)
+cursor = conn.cursor()
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        task_name = request.form['task_name']
+
+        # Insert task into database
+        cursor.execute("INSERT INTO Tasks (task_name) VALUES (?)", task_name)
+        conn.commit()
+
+        return redirect('/')
+
+    # Fetch all tasks
+    cursor.execute("SELECT * FROM Tasks")
+    tasks = cursor.fetchall()
+
+    return render_template('index.html', tasks=tasks)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+templates/index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+</head>
+<body>
+
+<h2>Add Task</h2>
+
+<form method="POST">
+    <input type="text" name="task_name" placeholder="Enter task" required>
+    <button type="submit">Add Task</button>
+</form>
+
+<h3>Task List</h3>
+
+<ul>
+    {% for task in tasks %}
+        <li>{{ task.task_name }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
+
+OR
+
+Q2. Write a Python program that accepts a string from the user and performs the following tasks:
+a) Split the string into individual words.
+b) Identify and display all words that do not contain any vowels (a, e, i, o, u), ignore case while
+Checking for vowels.
+c) Sort and display these words in alphabetical order.
+d) Display the total count of such words.
+
+# Accept a string from the user
+text = input("Enter a string: ")
+
+# a) Split the string into individual words
+words = text.split()
+
+# List to store words without vowels
+no_vowel_words = []
+
+# b) Identify words that do not contain vowels
+vowels = "aeiou"
+
+for word in words:
+    if not any(v in word.lower() for v in vowels):
+        no_vowel_words.append(word)
+
+# c) Sort the words alphabetically
+no_vowel_words.sort()
+
+# Display the words
+print("Words without vowels:", no_vowel_words)
+
+# d) Display the total count
+print("Total count:", len(no_vowel_words))
+
+
