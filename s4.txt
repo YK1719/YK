@@ -1,0 +1,53 @@
+Write a Python program to create a list of elements. Shuffle the elements of a given list and display the list. [Hint: Use random.shuffle()]
+
+import random
+
+# Create a list
+lst = [10, 20, 30, 40, 50]
+
+print("Original List:", lst)
+
+# Shuffle the list
+random.shuffle(lst)
+
+print("Shuffled List:", lst)
+
+Q2. Write a python program for following 
+a) Create a file which stores the first name, middle name and last name of your 5 friends 
+b) Display contents of file 
+c) Append other 5 friend’s names 
+d) Display modified file contents
+
+# a) Create a file and store names of 5 friends
+f = open("friends.txt", "w")
+
+f.write("Rahul Amit Patil\n")
+f.write("Rohit Anil Shinde\n")
+f.write("Kiran Suresh Jadhav\n")
+f.write("Ajay Vijay Pawar\n")
+f.write("Amit Sunil More\n")
+
+f.close()
+
+# b) Display contents of file
+f = open("friends.txt", "r")
+print("Original File Content:")
+print(f.read())
+f.close()
+
+# c) Append other 5 friend names
+f = open("friends.txt", "a")
+
+f.write("Sagar Raj Patil\n")
+f.write("Vikas Ravi Kale\n")
+f.write("Nikhil Om Deshmukh\n")
+f.write("Pratik Yash Joshi\n")
+f.write("Rohan Tejas Mane\n")
+
+f.close()
+
+# d) Display modified file contents
+f = open("friends.txt", "r")
+print("Modified File Content:")
+print(f.read())
+f.close()
