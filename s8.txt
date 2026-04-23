@@ -1,0 +1,84 @@
+Write a python program to accepts value of radius from user and calculate the area of a circle using function. (Use 3.14 as the value of π).
+
+# Function to calculate area of circle
+def area_of_circle(radius):
+    area = 3.14 * radius * radius
+    return area
+
+# Accept radius from user
+r = float(input("Enter the radius of the circle: "))
+
+# Call function
+result = area_of_circle(r)
+
+# Display result
+print("Area of the circle is:", result)
+
+Write a python program to create a list, string and tuple in python. Apply random module to display unique multiple random elements from above created sequence type.
+
+import random
+
+# Create sequence types
+my_list = [10, 20, 30, 40, 50, 60]
+my_string = "PYTHONPROGRAM"
+my_tuple = (1, 2, 3, 4, 5, 6)
+
+# Display random unique elements
+print("Random elements from list:", random.sample(my_list, 3))
+print("Random elements from string:", random.sample(my_string, 4))
+print("Random elements from tuple:", random.sample(my_tuple, 2))
+
+
+Create a Web Page using Flask which contains following information about your college. a) College Name as a heading in center of web page. b) Display all the courses available in your college. c) Image of your College.
+
+App.py
+from flask import Flask, render_template
+app = Flask(__name__)
+@app.route('/')
+def home():
+    college_name = "ABC College of Science and Technology"
+      courses = [
+        "B.Sc Computer Science",
+        "BCA",
+        "BBA",
+        "B.Com",
+        "M.Sc Computer Science"
+    ]
+  return render_template("index.html", college_name=college_name, courses=courses)
+if __name__ == '__main__':
+    app.run(debug=True)
+
+templates/index.html
+
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Information</title>
+    <style>
+        h1{
+            text-align:center;
+        }
+        img{
+            display:block;
+            margin-left:auto;
+            margin-right:auto;
+            width:400px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>{{ college_name }}</h1>
+
+<h2>Courses Available</h2>
+<ul>
+    {% for course in courses %}
+    <li>{{ course }}</li>
+    {% endfor %}
+</ul>
+
+<img src="{{ url_for('static', filename='college.jpg') }}" alt="College Image">
+
+</body>
+</html>
