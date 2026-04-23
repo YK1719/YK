@@ -1,0 +1,87 @@
+Q1. Create a data.csv file containing employee name, designation, salary of an employee. Write a
+python program to create a DataFrame using data.csv and display the contents of DataFrame with
+statistical information of dataframe.
+
+Data.csv
+Name,Designation,Salary
+Rahul,Manager,60000
+Sneha,Developer,50000
+Amit,Analyst,45000
+Priya,HR,40000
+Rohit,Developer,48000
+
+Data.py
+import pandas as pd
+
+# Read CSV file and create DataFrame
+df = pd.read_csv("data.csv")
+
+# Display the DataFrame
+print("Employee Data:")
+print(df)
+
+# Display statistical information
+print("\nStatistical Information:")
+print(df.describe())
+
+Q2. Write a Python program that:
+a) Retrieves current local time and UTC time.
+b) Prints the current time using ctime() and gmtime().
+c) Accepts a date-time string input in the format DD-MM-YYYY HH:MM:SS.
+d) Parses the string using strptime() and formats it back using strftime() and display it in two
+custom formats.
+
+import time
+from datetime import datetime
+
+# a) Retrieve current local time and UTC time
+local_time = time.localtime()
+utc_time = time.gmtime()
+
+print("Current Local Time (struct_time):", local_time)
+print("Current UTC Time (struct_time):", utc_time)
+print("\n")
+
+# b) Print current time using ctime() and gmtime()
+print("Current Local Time (ctime):", time.ctime())
+print("Current UTC Time (gmtime + ctime):", time.asctime(utc_time))
+print("\n")
+
+# c) Accept date-time string input
+date_input = input("Enter date-time (DD-MM-YYYY HH:MM:SS): ")
+
+# d) Parse string using strptime()
+parsed_datetime = datetime.strptime(date_input, "%d-%m-%Y %H:%M:%S")
+
+# Format back using strftime() in two custom formats
+format1 = parsed_datetime.strftime("%A, %d %B %Y, %I:%M %p")  # Example: Friday, 15 March 2024, 08:30 PM
+format2 = parsed_datetime.strftime("%d/%m/%Y %H:%M:%S")       # Example: 15/03/2024 20:30:00
+
+print("\nParsed Date-Time in Custom Format 1:", format1)
+print("Parsed Date-Time in Custom Format 2:", format2)
+
+OR 
+
+Q2. Write a python program to create a list, string and tuple in python. Apply random module to display unique multiple random elements from above created sequence type
+
+import random
+
+# 1 Create different sequence types
+my_list = [10, 20, 30, 40, 50, 60]
+my_string = "PYTHON"
+my_tuple = ('apple', 'banana', 'cherry', 'date', 'fig')
+
+# 2️⃣ Number of random elements to pick
+n = 3
+
+#Display unique random elements from each sequence
+list_random = random.sample(my_list, n)
+string_random = random.sample(my_string, n)
+tuple_random = random.sample(my_tuple, n)
+
+print("Original List:", my_list)
+print("Random elements from List:", list_random)
+print("\nOriginal String:", my_string)
+print("Random elements from String:", string_random)
+print("\nOriginal Tuple:", my_tuple)
+print("Random elements from Tuple:", tuple_random)
