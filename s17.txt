@@ -1,0 +1,84 @@
+Q1. Write a Python program to accept a string and replace all occurrences of a spaces with a colon and comma with dot. Display modified string.
+
+# Accept string input
+text = input("Enter a string: ")
+
+# Replace spaces with ':' and commas with '.'
+modified_text = text.replace(" ", ":").replace(",", ".")
+
+# Display result
+print("Modified string:")
+print(modified_text)
+
+Q2. Write a python program to create a list, string and tuple in python. Apply random module
+To display unique multiple random elements from above created sequence type.
+
+import random
+
+# Create sequence types
+my_list = [10, 20, 30, 40, 50]
+my_string = "PYTHON"
+my_tuple = (1, 2, 3, 4, 5)
+
+# Number of random elements to pick
+n = 3
+
+# Get unique random elements using random.sample()
+list_sample = random.sample(my_list, n)
+string_sample = random.sample(my_string, n)
+tuple_sample = random.sample(my_tuple, n)
+
+# Display results
+print("Original List:", my_list)
+print("Random elements from list:", list_sample)
+
+print("\nOriginal String:", my_string)
+print("Random characters from string:", string_sample)
+
+print("\nOriginal Tuple:", my_tuple)
+print("Random elements from tuple:", tuple_sample)
+
+OR
+
+Q2. Write a python program using user define function to accept a number and perform the following
+Task:
+a) Check number is Armstrong or not.
+b) Calculate and display sum of digits till single digit [e.g. - 558 = 18 = 9]
+
+# Function to check Armstrong number
+def is_armstrong(num):
+    temp = num
+    power = len(str(num))
+    sum_val = 0
+    
+    while temp > 0:
+        digit = temp % 10
+        sum_val += digit ** power
+        temp //= 10
+    
+    return sum_val == num
+
+
+# Function to calculate sum of digits till single digit
+def sum_to_single_digit(num):
+    while num >= 10:
+        sum_val = 0
+        while num > 0:
+            sum_val += num % 10
+            num //= 10
+        num = sum_val
+    return num
+
+
+# Main program
+num = int(input("Enter a number: "))
+
+# (a) Armstrong check
+if is_armstrong(num):
+    print("Number is Armstrong")
+else:
+    print("Number is not Armstrong")
+
+# (b) Sum of digits till single digit
+result = sum_to_single_digit(num)
+print("Sum till single digit:", result)
