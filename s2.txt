@@ -1,0 +1,63 @@
+
+question-1
+
+s = input("Enter string: ")
+vowels = "aeiouAEIOU"
+v = c = sp = 0
+for ch in s:
+    if ch.isalpha():
+        if ch in vowels:
+            v += 1
+        else:
+            c += 1
+    else:
+       sp += 1
+print("Vowels:", v)
+print("Consonants:", c)
+print("Special Symbols:", sp)
+
+question-2
+
+import pandas as pd
+import numpy as np
+
+# Create DataFrame
+data = {
+    "Player": ["Hardik Pandya", "K L Rahul", "Andre Russel", "Jasprit Bumrah", "Virat Kohli", "Rohit Sharma"],
+    "Team": ["Mumbai Indians", "Kings Eleven", "Kolkata Knight Riders", "Mumbai Indians", "RCB", "Mumbai Indians"],
+    "Category": ["Batsman", "Batsman", "Batsman", "Bowler", "Batsman", "Batsman"],
+    "BidPrice": [13, 12, np.nan, 10, 17, np.nan],
+    "Runs": [1000, 2400, 900, 200, 3600, 3700]
+}
+
+df = pd.DataFrame(data)
+
+print("DataFrame:")
+print(df)
+
+# a) Retrieve first 2 rows
+print("\nFirst 2 rows:")
+print(df.head(2))
+
+# b) Retrieve last 3 rows
+print("\nLast 3 rows:")
+print(df.tail(3))
+
+# c) Check null values
+print("\nNull values:")
+print(df.isnull())
+
+# d) Replace null with mean
+df["BidPrice"].fillna(df["BidPrice"].mean(), inplace=True)
+print("\nAfter replacing null values:")
+print(df)
+
+# e) Most expensive player
+expensive = df[df["BidPrice"] == df["BidPrice"].max()]
+print("\nMost expensive player:")
+print(expensive)
+
+# f) Total players per team
+print("\nTotal players per team:")
+print(df["Team"].value_counts())
+
