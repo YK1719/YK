@@ -1,0 +1,80 @@
+Q1.Write a Python program to get the current time and demonstrate the following functions from the
+time module:
+a) Convert the current time in seconds to a readable string
+b) Converts time in seconds to a struct_time in UTC
+
+import time
+
+# Get current time in seconds since epoch
+current_seconds = time.time()
+print("Current time in seconds since epoch:", current_seconds)
+
+# a) Convert current time in seconds to a readable string using ctime()
+readable_time = time.ctime(current_seconds)
+print("Readable Time (ctime):", readable_time)
+
+# b) Convert time in seconds to struct_time in UTC using gmtime()
+utc_struct_time = time.gmtime(current_seconds)
+print("UTC struct_time (gmtime):", utc_struct_time)
+
+Q2. Write a Python program that prompts the user to enter a text file name. If the file exists, open it in
+read mode, display its contents line by line, and show the current file pointer position after each
+line using ftell(). Then move the file pointer back to the beginning using seek() and display the file
+content again. If the file does not exist, display an appropriate error message.
+
+import os
+
+# Prompt the user for file name
+file_name = input("Enter the text file name: ")
+
+# Check if the file exists
+if os.path.exists(file_name):
+    try:
+        # Open the file in read mode
+        with open(file_name, "r") as file:
+            print("\n--- Reading file line by line ---")
+            # Read and display lines with current file pointer position
+            for line in file:
+                print(line.strip())  # Display line without extra newline
+                print("File pointer position:", file.tell())
+            
+            # Move the file pointer back to the beginning
+            file.seek(0)
+            print("\n--- Reading file again from the beginning ---")
+            
+            for line in file:
+                print(line.strip())
+                
+    except Exception as e:
+        print("Error reading the file:", e)
+else:
+    print("File does not exist. Please check the file name.")
+
+OR
+
+Question-2
+import pandas as pd
+
+# a) Create Student 1 DataFrame
+student1 = pd.DataFrame({
+    'ID': ['S1', 'S2', 'S3', 'S4', 'S5'],
+    'Name': ['Anita', 'Sakshi', 'Om', 'Raj', 'Kanika'],
+    'Age': [18, 23, 20, 21, 20]
+})
+
+# Create Student 2 DataFrame
+student2 = pd.DataFrame({
+    'ID': ['S2', 'S4', 'S5', 'S6', 'S7'],
+    'City': ['Pune', 'Nashik', 'Mumbai', 'Delhi', 'Nanded'],
+    'Marks': [97, 78, 86, 66, 54]
+})
+
+# Display contents
+print("Student 1 DataFrame:\n", student1, "\n")
+print("Student 2 DataFrame:\n", student2, "\n")
+
+# b) Join the two DataFrames on 'ID' (matching records from both sides)
+student3 = pd.merge(student1, student2, on='ID', how='inner')
+
+# c) Display third DataFrame
+print("Joined DataFrame (Student 3):\n", student3)
