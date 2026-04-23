@@ -1,0 +1,96 @@
+Q1. Write a python program to accept a string, Count total number of vowels, consonants and special symbols from it.
+
+# Accept string input
+text = input("Enter a string: ")
+
+# Initialize counters
+vowels = 0
+consonants = 0
+specials = 0
+
+# Define vowels
+vowel_letters = "aeiouAEIOU"
+
+# Iterate over each character
+for char in text:
+    if char.isalpha():  # Check if alphabet
+        if char in vowel_letters:
+            vowels += 1
+        else:
+            consonants += 1
+    elif char.isdigit() or char.isspace():
+        continue  # Ignore digits and spaces
+    else:
+        specials += 1  # Anything else is special symbol
+
+# Display results
+print("Total Vowels:", vowels)
+print("Total Consonants:", consonants)
+print("Total Special Symbols:", specials)
+
+Q2. Write a Python program to accept a file name and a byte position as input. If file exist open a file in read mode and move the file pointer to the given byte position, prints the content of the file from that position till end of file otherwise give appropriate message.
+
+import os
+
+# Accept file name and byte position
+file_name = input("Enter file name: ")
+byte_pos = int(input("Enter byte position: "))
+
+# Check if file exists
+if os.path.exists(file_name):
+    try:
+        # Open file in read-binary mode to handle byte positions correctly
+        with open(file_name, 'rb') as file:
+            # Move file pointer to the specified byte position
+            file.seek(byte_pos)
+            
+            # Read the rest of the file
+            content = file.read()
+            
+            # Decode to string assuming utf-8 encoding
+            print("\nContent from byte position", byte_pos, ":\n")
+            print(content.decode('utf-8'))
+    except Exception as e:
+        print("Error reading file:", e)
+else:
+    print("File does not exist.")
+
+OR
+Question-2 
+
+import pandas as pd
+
+# Create DataFrame
+data = {
+    "school": ["S1", "S2", "S3", "S4", "S5", "S6"],
+    "class": ["S001", "S002", "S003", "S004", "S005", "S006"],
+    "name": ["Asha", "Fransis", "Charlie", "David", "Shyam", "Eashel"],
+    "date_of_birth": ["15/05/2002", "17/05/2002", "16/02/1999", "25/09/1998", "11/05/2002", "15/09/1997"],
+    "age": [12, 12, 13, 14, 12, 16],
+    "height": [173, 192, 186, 167, 151, 159],
+    "weight": [35, 32, 33, 30, 31, 32],
+    "address": ["Street1", "Street2", "Street3", "Street4", "Street5", "Street6"]
+}
+
+df = pd.DataFrame(data)
+
+print("Original DataFrame:\n", df)
+
+# (a) Group by school
+grouped = df.groupby('school')
+print("\nGrouped DataFrame by 'school':")
+for name, group in grouped:
+    print(f"\nSchool: {name}")
+    print(group)
+
+# (b) Display type of GroupBy object
+print("\nType of GroupBy object:", type(grouped))
+
+# (c) Mean, min, max of age for each school group
+age_stats = grouped['age'].agg(['mean', 'min', 'max'])
+print("\nAge statistics (mean, min, max) per school:")
+print(age_stats)
+
+# (d) Count students with weight > 32
+count_weight_gt32 = df[df['weight'] > 32].shape[0]
+print("\nNumber of students with weight greater than 32:", count_weight_gt32)
