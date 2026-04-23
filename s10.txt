@@ -1,0 +1,101 @@
+Write a python program to create a DataFrame from list of 10 integer values. Display contents of DataFrame and calculate sum, mean, median, mode, Standard deviation of DataFrame.
+
+import pandas as pd
+
+# Create list of 10 integer values
+data = [12, 15, 18, 20, 15, 22, 25, 18, 30, 15]
+
+# Create DataFrame
+df = pd.DataFrame(data, columns=['Numbers'])
+
+# Display DataFrame
+print("DataFrame Contents:")
+print(df)
+
+# Calculate statistics
+print("\nSum:", df['Numbers'].sum())
+print("Mean:", df['Numbers'].mean())
+print("Median:", df['Numbers'].median())
+print("Mode:", df['Numbers'].mode()[0])
+print("Standard Deviation:", df['Numbers'].std())
+
+Create a package finance_tools with modules interest.py and currency.py [10 Marks] a) interest.py should contain function cal_interest(amount, year) that accepts amount, year . Calculates and returns simple interest using a fixed rate (for example, 5%). b) currency.py should contain function converet(amount) that accepts amount in INR and converts it into USD. (consider conversion rate 0.012) Write a python program to import modules from finance_tools package and demonstrate both functions.
+
+Interest.py
+
+# finance_tools/interest.py
+
+def cal_interest(amount, year):
+    """
+    Calculate simple interest using fixed rate 5%
+    SI = (P * R * T) / 100
+    """
+    rate = 5  # fixed rate
+    si = (amount * rate * year) / 100
+    return si
+
+currency.py
+# finance_tools/currency.py
+
+def convert(amount):
+    """
+    Convert INR to USD using rate 0.012
+    """
+    rate = 0.012
+    usd = amount * rate
+    return usd
+
+main.py
+# main.py
+
+# Import functions from finance_tools package
+from finance_tools.interest import cal_interest
+from finance_tools.currency import convert
+
+# Accept user input
+amount = float(input("Enter amount in INR: "))
+year = float(input("Enter number of years: "))
+
+# Calculate simple interest
+si = cal_interest(amount, year)
+print(f"Simple Interest for {year} years on {amount} INR is: {si} INR")
+
+# Convert amount to USD
+usd_amount = convert(amount)
+print(f"Amount {amount} INR in USD is: {usd_amount} USD")
+
+OR
+Write a Python program to create a class that acts as an iterator and generates the factorial series up to n (1! + 2! + 3! + … + n!). (Accept input from the user)
+
+# Factorial iterator class
+class FactorialSeries:
+    def __init__(self, n):
+        self.n = n      # Maximum number
+        self.i = 1      # Current number in series
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.i > self.n:
+            raise StopIteration
+        # Calculate factorial of current i
+        fact = 1
+        for j in range(1, self.i + 1):
+            fact *= j
+        self.i += 1
+        return fact
+
+
+# Accept input from user
+n = int(input("Enter a number n: "))
+
+# Create iterator object
+factorial_series = FactorialSeries(n)
+
+# Display factorial series
+print(f"Factorial series up to {n}!:")
+for value in factorial_series:
+    print(value, end=' ')
+
+
