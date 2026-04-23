@@ -1,0 +1,99 @@
+Q1. Write a python program to accept a string and substring from user. Check if a particular substring is
+present at the beginning of the given string, give appropriate message. (Use RE module)
+
+import re
+
+# Accept string and substring from the user
+text = input("Enter the main string: ")
+substring = input("Enter the substring to check: ")
+
+# Create a pattern to match substring at the beginning
+pattern = r'^' + re.escape(substring)  # ^ ensures match at start
+
+# Use re.match to check
+if re.match(pattern, text):
+    print(f"The substring '{substring}' is present at the beginning of the string.")
+else:
+    print(f"The substring '{substring}' is NOT present at the beginning of the string.")
+
+Q2. Write a Python program to accept a file name and a byte position as input. If file exist open a file in
+read mode and move the file pointer to the given byte position, prints the content of the file from
+that position till end of file otherwise give appropriate message.
+
+import os
+
+# Accept file name and byte position from user
+file_name = input("Enter file name: ")
+try:
+    byte_position = int(input("Enter byte position: "))
+except ValueError:
+    print("Byte position must be an integer.")
+    exit()
+
+# Check if file exists
+if os.path.exists(file_name):
+    try:
+        # Open file in read mode
+        with open(file_name, "r") as file:
+            # Move file pointer to the given byte position
+            file.seek(byte_position)
+            
+            # Read and display content from that position till end
+            content = file.read()
+            print("\nContent from byte position", byte_position, ":\n")
+            print(content)
+            
+    except Exception as e:
+        print("Error reading the file:", e)
+else:
+    print("File does not exist. Please check the file name.")
+
+OR
+
+Q2. Write a python program to create a module containing factorial function, power dictionary and list
+of vowels. Save this as variables.py. Import variables module to print the factorial of n, print the
+power of n, and second alphabet from the vowels list. (Accept n from user)
+
+# variables.py
+
+# 1 Factorial function
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+# 2 Power dictionary for numbers 1 to 10
+power_dict = {x: x**2 for x in range(1, 11)}
+
+# 3 List of vowels
+vowels = ['a', 'e', 'i', 'o', 'u']
+
+OR 
+# main.py
+
+# Import the custom module
+import variables
+
+# Accept n from user
+try:
+    n = int(input("Enter a number n: "))
+except ValueError:
+    print("Please enter a valid integer.")
+    exit()
+
+# 1 Print factorial of n
+fact = variables.factorial(n)
+print(f"Factorial of {n} is: {fact}")
+
+# 2 Print power of n (from power_dict if available)
+if n in variables.power_dict:
+    print(f"Square of {n} from power_dict is: {variables.power_dict[n]}")
+else:
+    print(f"{n} is not in power_dict (only 1-10). Computing square: {n**2}")
+
+# 3 Print second alphabet from vowels list
+if len(variables.vowels) >= 2:
+    print(f"Second vowel is: {variables.vowels[1]}")
+else:
+    print("Vowels list does not have a second element.")
