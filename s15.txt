@@ -1,0 +1,118 @@
+Q1. Write a Python program to get the current time and demonstrate the following functions from the
+time module:
+a) Converts time in seconds to a struct_time in UTC
+b) Converts a struct_time object into a formatted string.
+
+import time
+
+# Get current time in seconds since epoch
+current_seconds = time.time()
+print("Current time in seconds since epoch:", current_seconds)
+
+# (a) Convert seconds to struct_time in UTC
+utc_time = time.gmtime(current_seconds)
+print("\nUTC struct_time:")
+print(utc_time)
+
+# (b) Convert struct_time to formatted string
+formatted_time = time.strftime("%Y-%m-%d %H:%M:%S", utc_time)
+print("\nFormatted UTC time:")
+print(formatted_time)
+
+
+Q2. Create a Web Page using Flask which contains following information about your Library Book List
+a) Show the library name as a heading.
+b) Display all available books in a table with title and author.
+c) Add quote about reading in bold and blue color.
+
+App.py
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+# Sample book list
+books = [
+    {"title": "The Alchemist", "author": "Paulo Coelho"},
+    {"title": "Harry Potter", "author": "J.K. Rowling"},
+    {"title": "Wings of Fire", "author": "A.P.J. Abdul Kalam"}
+]
+
+@app.route('/')
+def home():
+    library_name = "My Library"
+    quote = "A room without books is like a body without a soul."
+    return render_template("index.html", name=library_name, books=books, quote=quote)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+templates/index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: auto;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        .quote {
+            color: blue;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- (a) Library Name -->
+    <h1>{{ name }}</h1>
+
+    <!-- (b) Book Table -->
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- (c) Quote -->
+    <p class="quote">{{ quote }}</p>
+
+</body>
+</html>
+
+OR
+
+Q2. Write a python program to check weather given url is valid or not? (for Ex:
+https://www.yahoo.com)
+
+import requests
+
+url = input("Enter URL: ")
+
+try:
+    response = requests.get(url)
+    if response.status_code == 200:
+        print("Valid URL and reachable")
+    else:
+        print("URL is valid but returned status code:", response.status_code)
+except:
+    print("Invalid URL or not reachable")
