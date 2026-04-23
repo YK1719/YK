@@ -1,0 +1,37 @@
+Write a python program to accept a string, find all words that do not contain vowels.
+
+s = input("Enter a string: ")
+vowels = "aeiouAEIOU"
+words = s.split()
+print("Words without vowels:")
+for word in words:
+    has_vowel = False
+    for ch in word:
+        if ch in vowels:
+            has_vowel = True
+            break
+    if not has_vowel:
+        print(word)
+
+Create a package banking with modules account.py and loan.py. [10 Marks]
+ a) account.py should contain function open_account(name) that accepts a user’s name and prints a message confirming account creation
+ b) loan.py should contain function apply_loan(amount) that accepts a loan amount and prints a confirmation message with the amount 
+Write a python program to import modules from banking package and demonstrate both functions.
+
+Account.py
+def open_account(name):
+    print("Account successfully created for:", name)
+
+loan.py
+def apply_loan(amount):
+    print("Loan applied successfully for amount:", amount)
+
+main.py
+from banking import account
+from banking import loan
+
+name = input("Enter customer name: ")
+amount = int(input("Enter loan amount: "))
+
+account.open_account(name)
+loan.apply_loan(amount)
