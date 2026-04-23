@@ -1,0 +1,42 @@
+Q1. Write a Python program to shuffle a deck of card. Display the cards obtained by a user in 5
+attempts.
+
+import random
+
+# Define suits and ranks
+suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+
+# Create the deck
+deck = [f"{rank} of {suit}" for suit in suits for rank in ranks]
+
+# Shuffle the deck
+random.shuffle(deck)
+
+# Display 5 cards drawn for the user
+print("5 Cards drawn for you:")
+for i in range(5):
+    print("-", deck[i])
+
+
+Q2. Write a python program to display all entries in a current directory and identify each as file or
+folder. [Use getcwd() function to retrieve current directory]
+
+import os
+
+# Get current working directory
+current_dir = os.getcwd()
+print("Current Directory:", current_dir, "\n")
+
+# List all entries
+entries = os.listdir(current_dir)
+
+# Identify each entry as file or folder
+for entry in entries:
+    path = os.path.join(current_dir, entry)
+    if os.path.isfile(path):
+        print("File  :", entry)
+    elif os.path.isdir(path):
+        print("Folder:", entry)
+    else:
+        print("Other :", entry)
