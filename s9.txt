@@ -1,0 +1,95 @@
+Write a python program to accepts a value of n and create a generator that yields even numbers up to n.
+
+# Generator function
+def even_numbers(n):
+    for i in range(2, n+1, 2):
+        yield i
+
+# Accept value from user
+n = int(input("Enter value of n: "))
+
+# Create generator
+gen = even_numbers(n)
+
+# Display even numbers
+print("Even numbers up to", n, "are:")
+for num in gen:
+    print(num)
+
+question-2
+import pandas as pd
+
+# Create Student1 DataFrame
+data1 = {
+    'ID': ['S1', 'S2', 'S3', 'S4', 'S5'],
+    'Name': ['Anita', 'Sakshi', 'Om', 'Raj', 'Kanika'],
+    'Age': [18, 23, 20, 21, 20]
+}
+
+student1 = pd.DataFrame(data1)
+
+print("Student 1 DataFrame:")
+print(student1)
+
+
+# Create Student2 DataFrame
+data2 = {
+    'ID': ['S2', 'S4', 'S5', 'S6', 'S7'],
+    'City': ['Pune', 'Nashik', 'Mumbai', 'Delhi', 'Nanded'],
+    'Marks': [97, 78, 86, 66, 54]
+}
+
+student2 = pd.DataFrame(data2)
+
+print("\nStudent 2 DataFrame:")
+print(student2)
+
+
+# Join both DataFrames with matching records
+student3 = pd.merge(student1, student2, on='ID')
+
+print("\nThird DataFrame (Joined Data):")
+print(student3)
+
+OR
+question-2
+
+Write a python program using user define function to accept a number and perform the following task: a) Check number is Armstrong or not. b) Calculate and display sum of digits till single digit [e.g. - 558 = 18 = 9]
+
+# Function to check Armstrong number
+def check_armstrong(num):
+    temp = num
+    power = len(str(num))
+    sum = 0
+
+    while temp > 0:
+        digit = temp % 10
+        sum += digit ** power
+        temp //= 10
+
+    if sum == num:
+        print(num, "is an Armstrong number")
+    else:
+        print(num, "is not an Armstrong number")
+
+
+# Function to calculate sum of digits till single digit
+def sum_single_digit(num):
+    while num >= 10:
+        s = 0
+        while num > 0:
+            s += num % 10
+            num //= 10
+        num = s
+    return num
+
+
+# Accept number from user
+n = int(input("Enter a number: "))
+
+# Call functions
+check_armstrong(n)
+result = sum_single_digit(n)
+
+print("Sum of digits till single digit:", result)
+
