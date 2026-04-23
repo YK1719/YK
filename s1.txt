@@ -1,0 +1,24 @@
+Question-1
+import pandas as pd
+
+data = {
+    "Mobile": ["Samsung", "Apple", "Vivo", "Oppo"],
+    "Price": [20000, 70000, 15000, 18000]
+}
+
+df = pd.DataFrame(data)
+print(df)
+
+question -2
+
+cars.py
+def available_models():
+    return ["Swift", "Baleno", "Creta"]
+bikes.py
+def available_models():
+    return ["Splendor", "Pulsar", "Apache"]
+
+main.py
+from  vehicle.types  import cars, bikes
+print("Car Models:", cars.available_models())
+print("Bike Models:", bikes.available_models())
