@@ -1,0 +1,57 @@
+Q1. Write a Python program using regular expressions to validate whether a given string matches the
+pattern of three-letter words such as bit, but, bat, hit, hut, hat.
+
+import re
+
+# Pattern: first letter b or h, second letter i/a/u, third letter t
+pattern = r'^[bh][iau]t$'
+
+word = input("Enter a word: ")
+
+if re.match(pattern, word):
+    print("Valid word (matches pattern)")
+else:
+    print("Invalid word")
+
+
+Question-2 
+
+import pandas as pd
+import numpy as np
+
+# Create DataFrame
+data = {
+    "Player": ["Hardik Pandya", "K L Rahul", "Andre Russel", "Jasprit Bumrah", "Virat Kohli", "Rohit Sharma"],
+    "Team": ["Mumbai Indians", "Kings Eleven", "Kolkata Knight Riders", "Mumbai Indians", "RCB", "Mumbai Indians"],
+    "Category": ["Batsman", "Batsman", "Batsman", "Bowler", "Batsman", "Batsman"],
+    "BidPrice": [13, 12, 7, 10, 17, 15],
+    "Runs": [1000, 2400, 900, 200, 3600, 3700]
+}
+
+df = pd.DataFrame(data)
+
+print("Original DataFrame:\n", df)
+
+# (a) First 2 rows
+print("\nFirst 2 rows:")
+print(df.head(2))
+
+# (b) Last 3 rows
+print("\nLast 3 rows:")
+print(df.tail(3))
+
+# (c) Add null values (example: set one value to NaN)
+df.loc[2, 'Runs'] = np.nan
+print("\nDataFrame after adding null value:")
+print(df)
+
+# (d) Most expensive player (highest BidPrice)
+most_expensive = df.loc[df['BidPrice'].idxmax()]
+print("\nMost expensive player:")
+print(most_expensive)
+
+# (e) Total players per team
+team_count = df['Team'].value_counts()
+print("\nTotal players per team:")
+print(team_count)
+
