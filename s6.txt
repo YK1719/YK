@@ -1,0 +1,59 @@
+Write a Python program that prompts the user to input two numbers and raises a TypeError exception if the inputs are not numerical.
+
+try:
+    a = input("Enter first number: ")
+    b = input("Enter second number: ")
+
+   # check if inputs are numeric
+    if not (a.isdigit() and b.isdigit()):
+        raise TypeError("Inputs must be numerical")
+    a = int(a)
+    b = int(b)
+ print("Sum =", a + b)
+except TypeError as e:
+    print("Error:", e)
+Repeat question in slip-4
+
+OR
+
+Create a Web Page using Flask which contains following information about your Personal Portfolio Page a) Show your name as a centered heading. b) List your Qualification details. c) Add your special skill in scrolling.
+
+App.py
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template("portfolio.html")
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+templates/portfolio.html
+portfolio.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Portfolio</title>
+</head>
+<body>
+
+<h1 style="text-align:center;">Prashant Kadam</h1>
+
+<h2>Qualification</h2>
+<ul>
+    <li>B.Sc Computer Science</li>
+    <li>12th Science</li>
+    <li>10th SSC</li>
+</ul>
+
+<h2>Special Skills</h2>
+
+<marquee behavior="scroll" direction="left">
+Python Programming | Web Development | Database Management
+</marquee>
+
+</body>
+</html>
